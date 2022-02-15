@@ -5,12 +5,13 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class DashboardController {
-
-	@GetMapping("/")
+public class TasksController {
+	
+	@GetMapping("/tasks")
 	public String dashboardGet(ModelMap model) {
 		model.addAttribute("nomeDoAtributo", "20%");
 		
-		return "index.html";
+		return "tables.html";
 	}
+
 }
