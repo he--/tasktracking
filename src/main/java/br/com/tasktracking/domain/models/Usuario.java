@@ -143,4 +143,8 @@ public class Usuario implements UserDetails{
 		// TODO Auto-generated method stub
 		return true;
 	}
+	
+	public String toString() {
+		return this.nome.concat(email);
+	}
 }
