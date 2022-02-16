@@ -9,19 +9,30 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.tasktracking.domain.models.Usuario;
-import br.com.tasktracking.infrastructure.dao.UsuarioDao;
+import br.com.tasktracking.infrastructure.repository.UsuarioRepository;
 
 @Controller
 public class UsuarioController {
 	
 	
+
 	@Autowired
-	private UsuarioDao usuarioDao;
+	private UsuarioRepository usuarioRepository;
 	
 	@GetMapping("/usuarios")
 	@ResponseBody
 	public String listar() {
-		List<Usuario> usuarios = usuarioDao.listar();
+		
+		Usuario usuario = new Usuario();
+		usuario.setNome("Thiago de Carvalho");
+		usuario.setEmail("thiago@gmail.com");
+		usuario.setLogin("thiago");
+		usuario.setSenha("teste");
+		
+		usuarioRepository.save(usuario);
+		
+		
+		List<Usuario> usuarios = usuarioRepository.findAll();
 
         return usuarios.toString();
 	}
