@@ -19,7 +19,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 public class Usuario implements UserDetails{
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="usuario_sequence")
 	@SequenceGenerator(name="pessoa_sequence", sequenceName="nu_seq_usuario_seq")
 	@Column(name="nu_seq_usuario")
 	private Integer idUsuario;
