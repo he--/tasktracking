@@ -5,18 +5,18 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import br.com.tasktracking.domain.models.Usuario;
+
+import br.com.tasktracking.domain.models.Sprint;
 
 @Repository
 @Transactional
-public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
+public interface SprintRepository extends JpaRepository<Sprint, Integer> {
 	
-	Usuario findByLogin(String login);
+	Sprint save(Sprint sprint);
 	
-	Usuario findById(int id);
+	List<Sprint> findAll();
 	
-	Usuario save(Usuario usuario);
+	List<Sprint> findByProjeto(int projeto);
 	
-	List<Usuario> findAll();
-
+	Sprint findById(int id);
 }

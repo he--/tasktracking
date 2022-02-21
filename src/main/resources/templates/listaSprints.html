@@ -8,7 +8,7 @@
         <meta name="author" content="" />
         <title>Board</title>
         <!-- Custom fonts for this template-->
-        <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
+        <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
         <!-- Custom styles for this template-->
         <link href="../css/sb-admin-2.min.css" rel="stylesheet" />
@@ -245,232 +245,60 @@
                     </nav>
 
                     <div>
-                        <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                            <h2 class="h3 mb-0 text-gray-800">Scrum Board</h2>
-                        </div>
 
-                        <div class="row">
-                            <div class="card shadow mb-3">
-                                <div class="card-header py-3">
-                                    <h5 class="m-0 font-weight-bold text-primary">Sprint Backlog</h5>
-                                </div>
-                                <div class="card-body">
-                                    <div class="table-responsive">
-                                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                            <tbody>
-                                                <tr th:each="student: ${students}" th:style="font-weight">
-                                                    <td>
-                                                        <!-- Card Header - Accordion -->
-                                                        <a
-                                                            th:href="'#collapse' + ${student.login}"
-                                                            class="d-block card-header py-3"
-                                                            data-toggle="collapse"
-                                                            role="button"
-                                                            aria-expanded="true"
-                                                            th:attr="aria-controls='collapse' + ${student.login}"
-                                                        >
-                                                            <h6 class="m-0 font-weight-bold text-primary" style="width: 180px;">Historia: 25612</h6>
-                                                            <h6 class="m-0 font-weight-bold text-primary" style="width: 180px;">Autorização de Eventos para licenciamento sanitário</h6>
-                                                        </a>
-                                                        <!-- Card Content - Collapse -->
-                                                        <div class="collapse" th:id="'collapse' + ${student.login}" style="width: 180px;">
-                                                            <div class="card-body">
-                                                                This is a collapsable card example using Bootstrap's built in collapse functionality. <strong>Click on the card header</strong> to see the card body collapse and expand!
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h5 class="m-0 font-weight-bold text-primary">Á Fazer(Tasks)</h5>
-                                </div>
-                                <div class="card-body">
-                                    <div class="table-responsive">
-                                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                            <tbody>
-                                                <tr th:each="task: ${tasksAFAzer}" th:style="font-weight">
-                                                    <td>
-                                                        <div class="card border-left-dark shadow h-100 py-2">
-                                                            <div class="card-body">
-                                                                <div class="row no-gutters align-items-center">
-                                                                    <div class="col mr-2">
-                                                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1" style="width: 180px;">Número: <span th:text="${task.id}" /></div>
-                                                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1" style="width: 180px;">História: <span th:text="${task.historia}" /></div>
-                                                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1" style="width: 180px;">dt Cadastro: <span th:text="${task.dtCadastro}" /></div>
-                                                                        <a th:href="'#collapse' + ${task.id}" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true"  th:attr="aria-controls='collapse' + ${task.id}">
-                                                                            <h6 class="m-0 font-weight-bold text-primary" style="width: 150px;">Descrição</h6>
-                                                                        </a>
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
 
-                                                        				<div class="collapse" th:id="'collapse' + ${task.id}" style="width: 180px;">
-                                                                            <div class="card-body">
-																				<h6><span th:text="${task.descricao}" /></h6>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h5 class="m-0 font-weight-bold text-primary">Em Andamento</h5>
-                                </div>
-                                <div class="card-body">
-                                    <div class="table-responsive">
-                                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                            <tbody>
-                                                <tr th:each="task: ${tasksEmAndamento}" th:style="font-weight">
-                                                    <td>
-                                                        <div class="card border-left-warning shadow h-100 py-2">
-                                                            <div class="card-body">
-                                                                <div class="row no-gutters align-items-center">
-                                                                    <div class="col mr-2">
-                                                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1" style="width: 180px;">Número: <span th:text="${task.id}" /></div>
-                                                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1" style="width: 180px;">História: <span th:text="${task.historia}" /></div>
-                                                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1" style="width: 180px;">Data Cadastro: <span th:text="${task.dtCadastro}" /></div>
-                                                                        <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
-                                                                            <h6 class="m-0 font-weight-bold text-primary" style="width: 150px;">Descrição</h6>
-                                                                        </a>
+                    <!-- Page Heading -->
+                    <h1 class="h3 mb-2 text-gray-800">Lista de Projetos</h1>
 
-                                                                        <div class="collapse" id="collapseCardExample" style="width: 180px;">
-                                                                            <div class="card-body">
-																				<h6><span th:text="${task.descricao}" /></h6>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                                                 <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h5 class="m-0 font-weight-bold text-primary">Concluidas</h5>
-                                </div>
-                                <div class="card-body">
-                                    <div class="table-responsive">
-                                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                            <tbody>
-                                                <tr th:each="task: ${tasksConcuidas}" th:style="font-weight">
-                                                    <td>
-                                                        <div class="card border-left-success shadow h-100 py-2">
-                                                            <div class="card-body">
-                                                                <div class="row no-gutters align-items-center">
-                                                                    <div class="col mr-2">
-                                                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1" style="width: 180px;">Número: <span th:text="${task.id}" /></div>
-                                                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1" style="width: 180px;">História: <span th:text="${task.historia}" /></div>
-                                                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1" style="width: 180px;">Data Cadastro: <span th:text="${task.dtCadastro}" /></div>
-                                                                        <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
-                                                                            <h6 class="m-0 font-weight-bold text-primary" style="width: 150px;">Descrição</h6>
-                                                                        </a>
-
-                                                                        <div class="collapse" id="collapseCardExample" style="width: 180px;">
-                                                                            <div class="card-body">
-																				<h6><span th:text="${task.descricao}" /></h6>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                                                 <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h5 class="m-0 font-weight-bold text-primary">Homologação</h5>
-                                </div>
-                                <div class="card-body">
-                                    <div class="table-responsive">
-                                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                            <tbody>
-                                                <tr th:each="task: ${tasksEmHomologacao}" th:style="font-weight">
-                                                    <td>
-                                                        <div class="card border-left-danger shadow h-100 py-2">
-                                                            <div class="card-body">
-                                                                <div class="row no-gutters align-items-center">
-                                                                    <div class="col mr-2">
-                                                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1" style="width: 180px;">Número: <span th:text="${task.id}" /></div>
-                                                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1" style="width: 180px;">História: <span th:text="${task.historia}" /></div>
-                                                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1" style="width: 180px;">Data Cadastro: <span th:text="${task.dtCadastro}" /></div>
-                                                                        <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
-                                                                            <h6 class="m-0 font-weight-bold text-primary" style="width: 150px;">Descrição</h6>
-                                                                        </a>
-
-                                                                        <div class="collapse" id="collapseCardExample" style="width: 180px;">
-                                                                            <div class="card-body">
-																				<h6><span th:text="${task.descricao}" /></h6>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                                                 <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h5 class="m-0 font-weight-bold text-primary">Impedimentos</h5>
-                                </div>
-                                <div class="card-body">
-                                    <div class="table-responsive">
-                                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                            <tbody>
-                                                <tr th:each="task: ${tasksEmImpedimento}" th:style="font-weight">
-                                                    <td>
-                                                        <div class="card border-left-secondary shadow h-100 py-2">
-                                                            <div class="card-body">
-                                                                <div class="row no-gutters align-items-center">
-                                                                    <div class="col mr-2">
-                                                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1" style="width: 180px;">Número: <span th:text="${task.id}" /></div>
-                                                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1" style="width: 180px;">História: <span th:text="${task.historia}" /></div>
-                                                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1" style="width: 180px;">Data Cadastro: <span th:text="${task.dtCadastro}" /></div>
-                                                                        <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
-                                                                            <h6 class="m-0 font-weight-bold text-primary" style="width: 150px;">Descrição</h6>
-                                                                        </a>
-
-                                                                        <div class="collapse" id="collapseCardExample" style="width: 180px;">
-                                                                            <div class="card-body">
-																				<h6><span th:text="${task.descricao}" /></h6>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Cod. Sprint</th>
+                                            <th>Versão</th>
+                                            <th>Cod. Projeto</th>
+                                            <th>Data Início</th>
+                                            <th>Data Fim</th>
+                                             <th>Editar|Excluir|Backlog</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Cod. Sprint</th>
+                                            <th>Versão</th>
+                                            <th>Cod. Projeto</th>
+                                            <th>Data Início</th>
+                                            <th>Data Fim</th>
+                                             <th>Editar|Excluir|Backlog</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+										 <tr th:each="sprint: ${sprints}" th:style="font-weight">
+											<td><span th:text="${sprint.id}"></td>
+											<td><span th:text="${sprint.versao}"></td>
+											<td><span th:text="${sprint.projeto}"></td>
+											<td><span th:text="${sprint.dtInicio}"></td>
+											<td><span th:text="${sprint.dtFim}"></td>
+											<td>
+												<a href="#" class="btn btn-info btn-circle btn-sm"><i class="fas fa-info-circle"></i> </a>
+												<a href="#" class="btn btn-danger btn-circle btn-sm"><i class="fas fa-trash"></i></a>
+												<a th:href="@{/board/{id}(id = ${sprint.id})}" class="btn btn-success btn-circle btn-sm"><i class="fas fa-check"></i></a>
+                                        	</td>
+                                         </tr>                                        
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
+                    </div>
+
+                </div>
+                <!-- /.container-fluid -->
+
                     </div>
                     <!-- /.container-fluid -->
                 </div>
@@ -502,16 +330,16 @@
             </div>
         </div>
         <!-- Bootstrap core JavaScript-->
-        <script src="../vendor/jquery/jquery.min.js"></script>
-        <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
         <!-- Core plugin JavaScript-->
-        <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
         <!-- Custom scripts for all pages-->
-        <script src="../js/sb-admin-2.min.js"></script>
+        <script src="js/sb-admin-2.min.js"></script>
         <!-- Page level plugins -->
-        <script src="../vendor/chart.js/Chart.min.js"></script>
+        <script src="vendor/chart.js/Chart.min.js"></script>
         <!-- Page level custom scripts -->
-        <script src="../js/demo/chart-area-demo.js"></script>
-        <script src="../js/demo/chart-pie-demo.js"></script>
+        <script src="js/demo/chart-area-demo.js"></script>
+        <script src="js/demo/chart-pie-demo.js"></script>
     </body>
 </html>

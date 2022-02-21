@@ -35,6 +35,9 @@ public class Task {
 	
 	@Column(name="observacao")
 	private String observacao;
+	
+	@Column(name="estimativa")
+	private String estimativa;
 
 	public Integer getId() {
 		return id;
@@ -82,5 +85,13 @@ public class Task {
 
 	public void setObservacao(String observacao) {
 		this.observacao = observacao;
+	}
+
+	public String getEstimativa() {
+		return estimativa;
+	}
+
+	public void setEstimativa(String estimativa) {
+		this.estimativa = estimativa;
 	}
 }
