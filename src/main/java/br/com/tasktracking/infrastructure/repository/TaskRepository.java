@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+import br.com.tasktracking.domain.models.Sprint;
 import br.com.tasktracking.domain.models.Task;
 
 @Repository
@@ -27,4 +28,7 @@ public interface TaskRepository extends JpaRepository<Task, Integer> {
 			+ "WHERE sp.nu_seq_sprint = ?1 and ta.ds_status = ?2", nativeQuery = true
 			)
 	List<Task> getTasksPorSprintStatus(int sprint, String status);
+	
+	Task findById(int id);
+
 }

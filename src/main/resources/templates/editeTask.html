@@ -11,14 +11,14 @@
         <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
         <!-- Custom styles for this template-->
-        <link href="css/sb-admin-2.min.css" rel="stylesheet" />
-        <link href="resources/templates/vendor/fontawesome-free/css/all.css" rel="stylesheet" type="text/css" />
+        <link href="../css/sb-admin-2.min.css" rel="stylesheet" />
+        <link href="../resources/templates/vendor/fontawesome-free/css/all.css" rel="stylesheet" type="text/css" />
     </head>
 
     <body id="page-top">
         <!-- Page Wrapper -->
         <div id="wrapper">
-                           <!-- Sidebar -->
+                 <!-- Sidebar -->
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
@@ -71,63 +71,47 @@
         <!-- End of Sidebar -->
             <!-- Content Wrapper -->
             <div id="content-wrapper" class="d-flex flex-column">
-                <!-- Main Content -->
-                <div id="content">
 
-                    <div>
-
-                <!-- Begin Page Content -->
-                <div class="container-fluid">
-                <div class="h3 mb-2 text-gray-800"> Lista de Projetos</div>
-
-                    <!-- Page Heading -->
-
-                    <!-- DataTales Example -->
-                    <div class="card shadow mb-4">
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>Cod. Projeto</th>
-                                            <th>Nome</th>
-                                            <th>descrição</th>
-                                            <th>Projeto Owner</th>
-                                            <th>Data de Cadastro</th>
-                                             <th>Editar|Excluir|Backlog</th>
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Cod. Projeto</th>
-                                            <th>Nome</th>
-                                            <th>descrição</th>
-                                            <th>Projeto Owner</th>
-                                            <th>Data de Cadastro</th>
-                                            <th>Editar|Excluir|Backlog</th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
-										 <tr th:each="projeto: ${projetos}" th:style="font-weight">
-											<td><span th:text="${projeto.id}"></td>
-											<td><span th:text="${projeto.nome}"></td>
-											<td><span th:text="${projeto.descricao}"></td>
-											<td><span th:text="${projeto.po}"></td>
-											<td><span th:text="${projeto.dtCadastro}"></td>
-											<td>
-												<a href="#" class="btn btn-info btn-circle btn-sm"><i class="fas fa-info-circle"></i> </a>
-												<a href="#" class="btn btn-danger btn-circle btn-sm"><i class="fas fa-trash"></i></a>
-												<a th:href="@{/listar-sprint/{id}(id = ${projeto.id})}" class="btn btn-success btn-circle btn-sm"><i class="fas fa-check"></i></a>
-                                        	</td>
-                                         </tr>                                        
-                                    </tbody>
-                                </table>
+            <div class="card-body p-0">
+                <!-- Nested Row within Card Body -->
+                <div class="row">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h1 class="h4 text-gray-900 mb-4">Atribuição da Task</h1>
                             </div>
+                            <h3 class="h4 text-gray-900 mb-4">Detalhes:</h3>
+                                <p>Codigo da task: <span th:text="${task.id}"></p>
+                                <p>Descrição: <span th:text="${task.descricao}"></p>
+                                <p>Historia: <span th:text="${task.historia}"></p>
+                                <p>Data de Cadastro: <span th:text="${task.dtCadastro}"></p>
+                                <p>Estimativa: <span th:text="${task.estimativa}"></p>
+                                
+                            <form class="projeto" action="cadastraProjeto" method="POST">
+                                <div class="form-group row">
+									    <label>Escolha o Usuário</label>
+									        <select  class="form-control" name="usuario" id="usuario">
+									            <option th:each="user : ${usuarios}"
+									                    th:text="${user.nome}"
+									                    th:value="${user.idUsuario}">
+									        </select>
+                                </div>
+                                <div class="form-group row">
+									    <label>Escolha o Status</label>
+									        <select  class="form-control" name="status" id="status">
+									            <option value='1'>Á Fazer</option>
+									            <option value='1'>Desenvolvimento</option>
+									             <option value='1'>Concluida</option>
+									             <option value='1'>Homologação</option>
+									             <option value='1'>Impedimento</option>
+									        </select>
+                                </div>
+                                <input type="submit" value="Cadastrar Projeto" class="btn btn-primary btn-user btn-block">
+                                <hr>
+                            </form>
+                            <hr>
                         </div>
-                    </div>
-
                 </div>
-                <!-- /.container-fluid -->
+            </div>
 
                     </div>
                     <!-- /.container-fluid -->
@@ -160,8 +144,8 @@
             </div>
         </div>
         <!-- Bootstrap core JavaScript-->
-        <script src="vendor/jquery/jquery.min.js"></script>
-        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="../vendor/jquery/jquery.min.js"></script>
+        <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
         <!-- Core plugin JavaScript-->
         <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
         <!-- Custom scripts for all pages-->
@@ -169,7 +153,7 @@
         <!-- Page level plugins -->
         <script src="vendor/chart.js/Chart.min.js"></script>
         <!-- Page level custom scripts -->
-        <script src="js/demo/chart-area-demo.js"></script>
-        <script src="js/demo/chart-pie-demo.js"></script>
+        <script src="../js/demo/chart-area-demo.js"></script>
+        <script src="../js/demo/chart-pie-demo.js"></script>
     </body>
 </html>
